@@ -7,7 +7,7 @@
 </p>
 
 ## Sobre o Projeto
-Este projeto consiste no desenvolvimento de um Tinder para desenvolvedores, construído com Nodejs, React e React Native. Vem pré configurado com:  
+Este projeto consiste no desenvolvimento de um Tinder para desenvolvedores, construído com Nodejs, React e React Native.
 
 1. Axios
 2. Cors
