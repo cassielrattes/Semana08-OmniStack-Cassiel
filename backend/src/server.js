@@ -3,18 +3,31 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const routes = require("./routes");
 
-const server = express();
+const app = express();
+const server = require("http").Server(app);
+const io = require("socket.io")(server);
 
-mongoose.connect(
-  "mongodb+srv://cassiel123:cassiel123@mernstack1-lh5nf.mongodb.net/week08?retryWrites=true&w=majority",
-  {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-  }
-);
+const connectedUsers = {};
 
-server.use(cors());
-server.use(express.json());
-server.use(routes);
+io.on("connection", socket => {
+  const { user } = socket.handshake.query;
+  connectedUsers[user] = socket.id;
+});
+
+mongoose.connect("Your MongoDB connection", {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+});
+
+app.use((req, res, next) => {
+  req.io = io;
+  req.connectedUsers = connectedUsers;
+
+  return next();
+});
+
+app.use(cors());
+app.use(express.json());
+app.use(routes);
 
 server.listen(5000);
