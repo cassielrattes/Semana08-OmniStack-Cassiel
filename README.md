@@ -19,13 +19,3 @@ Este projeto consiste no desenvolvimento de um Tinder para desenvolvedores, cons
 * [MongoDB](https://www.mongodb.com/cloud/atlas)
 * [Yarn](https://yarnpkg.com/pt-BR/)
   
-## Estrutura de Arquivos
-
-## Instalação
-```bash
-cd backend
-yarn install
-yarn start
-```
-
-
